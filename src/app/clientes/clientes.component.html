@@ -13,7 +13,7 @@
     </div>
     <div class="card-body">
       <h5 class="text-center text-secondary mb-4">Listado de Clientes Registrados</h5>
-      <div class="table-responsive">
+      <div *ngIf="clientes.length > 0; else noClientes" class="table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="table-dark text-center">
             <tr>
@@ -35,6 +35,11 @@
           </tbody>
         </table>
       </div>
+      <ng-template #noClientes>
+        <div class="alert alert-info text-center" role="alert">
+          No hay registros en la base de datos.
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>
