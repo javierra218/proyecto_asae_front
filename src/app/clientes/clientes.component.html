@@ -1,26 +1,36 @@
-<div class="d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card text-white bg-secondary mb-3 shadow-lg" style="max-width: 80rem; width: 90%;">
-    <div class="card-header text-center font-weight-bold">Clientes</div>
+<div class="container py-5">
+  <!-- Botón Crear Cliente -->
+  <div class="d-flex justify-content-end mb-4">
+    <button class="btn btn-primary btn-lg shadow-sm rounded-pill" type="button" [routerLink]="['/clientes/crearClientes']">
+      <i class="fas fa-user-plus me-2"></i> Crear Cliente
+    </button>
+  </div>
+
+  <!-- Tarjeta con tabla de clientes -->
+  <div class="card shadow-lg bg-light border-0 rounded">
+    <div class="card-header bg-primary text-white text-center py-3 rounded-top">
+      <h3 class="mb-0">Gestión de Clientes</h3>
+    </div>
     <div class="card-body">
-      <h5 class="card-title text-center mb-4">Listado de clientes</h5>
+      <h5 class="text-center text-secondary mb-4">Listado de Clientes Registrados</h5>
       <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-          <thead class="thead-dark">
+        <table class="table table-hover table-bordered">
+          <thead class="table-dark text-center">
             <tr>
-              <th>id</th>
-              <th>nombres</th>
-              <th>apellidos</th>
-              <th>email</th>
-              <th>fecha de creación</th>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Fecha de Creación</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let cliente of clientes">
-              <td>{{cliente.id}}</td>
-              <td>{{cliente.nombre}}</td>
-              <td>{{cliente.apellido}}</td>
-              <td>{{cliente.email}}</td>
-              <td>{{cliente.createAt}}</td>
+            <tr *ngFor="let cliente of clientes; let i = index" class="text-center align-middle">
+              <td>{{ i + 1 }}</td>
+              <td>{{ cliente.nombre }}</td>
+              <td>{{ cliente.apellido }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>{{ cliente.createAt | date: 'dd/MM/yyyy' }}</td>
             </tr>
           </tbody>
         </table>

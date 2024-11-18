@@ -1,25 +1,63 @@
-<div class="card bg-dark text-white">
-  <div class="card-header">{{ titulo }}</div>
-  <div class="card-body">
-  <form>
-  <div class="form-group row">
-  <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-  <div class="col-sm-6">
-  <input type="text" class="form-control" name="nombre">
+<div class="container py-5">
+  <div class="card shadow-lg rounded">
+    <!-- Encabezado -->
+    <div class="card-header bg-primary text-white text-center">
+      <h3 class="mb-0">{{ titulo }}</h3>
+    </div>
+
+    <!-- Cuerpo del formulario -->
+    <div class="card-body">
+      <form>
+        <!-- Campo Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input
+            type="text"
+            id="nombre"
+            class="form-control"
+            placeholder="Ingrese el nombre"
+            [(ngModel)]="cliente.nombre"
+            name="nombre"
+          />
+        </div>
+
+        <!-- Campo Apellido -->
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido</label>
+          <input
+            type="text"
+            id="apellido"
+            class="form-control"
+            placeholder="Ingrese el apellido"
+            [(ngModel)]="cliente.apellido"
+            name="apellido"
+          />
+        </div>
+
+        <!-- Campo Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            placeholder="Ingrese el email"
+            [(ngModel)]="cliente.email"
+            name="email"
+          />
+        </div>
+
+        <!-- Botón Crear -->
+        <div class="d-flex justify-content-end">
+          <button
+            class="btn btn-primary rounded-pill px-4 shadow-sm"
+            type="button"
+            (click)="crearCliente()"
+          >
+            Crear Cliente
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-  </div>
-  <div class="form-group row">
-  <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
-  <div class="col-sm-6">
-  <input type="text" class="form-control" name="apellido">
-  </div>
-  </div>
-  <div class="form-group row">
-  <label for="email" class="col-form-label col-sm-2">Email</label>
-  <div class="col-sm-6">
-  <input type="text" class="form-control" name="email">
-  </div>
-  </div>
-  </form>
-  </div>
-  </div>
+</div>
