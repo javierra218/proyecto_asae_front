@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    overflow-x: hidden; /* Evita el desbordamiento horizontal */
+  }
+  
+  .contenedor {
+    min-height: 50vh;
+    position: relative;
+  }
+  
+  footer {
+    padding: 15px;
+  }
+  
