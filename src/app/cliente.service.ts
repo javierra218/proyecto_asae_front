@@ -54,26 +54,31 @@ export class ClienteService {
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 400 || error.status === 404) {
-      const codigoError = error.error.codigoError;
-      const mensajeError = error.error.mensaje;
-      const codigoHttp = error.error.codigoHttp;
-      const url = error.error.url;
-      const metodo = error.error.metodo;
+      if (error.error?.mensaje) {
+        console.log('El atributo mensaje existe:', error.error.mensaje);
+        const codigoError = error.error.codigoError;
+        const mensajeError = error.error.mensaje;
+        const codigoHttp = error.error.codigoHttp;
+        const url = error.error.url;
+        const metodo = error.error.metodo;
 
-      console.error(
-        `Error ${codigoHttp} en ${metodo} ${url}: ${mensajeError} (Código: ${codigoError})`
-      );
+        console.error(
+          `Error ${codigoHttp} en ${metodo} ${url}: ${mensajeError} (Código: ${codigoError})`
+        );
 
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: mensajeError,
-        confirmButtonText: 'Cerrar',
-      });
+        Swal.fire({
+          icon: 'error',
+          title: '¡Error!',
+          text: mensajeError,
+          confirmButtonText: 'Cerrar',
+        });
 
-      return throwError(() => new Error(mensajeError));
-    } else {
-      return throwError(() => new Error('Ocurrió un error inesperado.'));
+        return throwError(() => new Error(mensajeError));
+      } else {
+        return throwError(() => new Error('Error desconocido.'));
+      }
     }
+
+    return throwError(() => error);
   }
 }
